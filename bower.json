@@ -1,0 +1,31 @@
+{
+  "name": "web-components-in-action",
+  "version": "0.0.0",
+  "authors": [
+    "Michael Bleigh <mbleigh@mbleigh.com>"
+  ],
+  "description": "The slide deck for Web Components in Action, presented at Fluent 2014",
+  "main": "index.html",
+  "keywords": [
+    "presentations",
+    "web",
+    "components"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/mbleigh/web-components-in-action",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "marked": "~0.3.1",
+    "polymer": "~0.2.1",
+    "polymer-elements": "~0.2.1",
+    "polymer-ui-elements": "~0.2.1",
+    "reveal.js": "~2.6.1"
+  }
+}

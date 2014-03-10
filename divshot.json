@@ -1,0 +1,9 @@
+{
+  "name": "web-components-in-action",
+  "root": "./",
+  "cache_control": {},
+  "routes": {},
+  "exclude": [
+    "node_modules"
+  ]
+}

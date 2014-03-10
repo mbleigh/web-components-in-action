@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Using the Shadow DOM for Clean Highlighting</title>
+    <script src="../bower_components/platform/platform.js"></script>
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+    <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+  </head>
+  <body>
+
+<pre class="source-code">// so highlight
+var doge = function(word) {
+  return "such " + word + ". much wow.";
+}</pre>
+    
+  <script>
+    [].forEach.call(document.querySelectorAll(".source-code"), function(codeBlock) {
+      var shadow = codeBlock.createShadowRoot();
+      shadow.applyAuthorStyles = true;
+      
+      var highlighted = document.createElement("pre");
+      highlighted.textContent = codeBlock.textContent;
+      
+      hljs.highlightBlock(highlighted);
+      
+      shadow.appendChild(highlighted);
+    });
+  </script>
+  </body>
+</html>
