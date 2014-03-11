@@ -565,3 +565,13 @@ Elements don't have to have a visual component.
 
 # Powerful Composition
 [Example: GitHub User Card Custom Element](/examples/custom-elements/github-user.html)
+
+===
+
+# Exercise Three
+`/exercises/03-scratch` ([readme](https://github.com/mbleigh/web-components-in-action/tree/master/exercises/03-scratch))
+
+===
+
+# Thanks!
+## @mbleigh
