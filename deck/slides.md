@@ -1,4 +1,4 @@
-# Web Components in Action
+<h1 class="huge">Web Components in Action</h1>
 ### Fluent 2014
 
 Created by **Michael Bleigh ([@mbleigh](http://twitter.com/mbleigh))** of **[Divshot](http://www.divshot.com/)**
@@ -79,7 +79,7 @@ Now just go to  `http://localhost:3474`
 
 ===
 
-# Origins of Web Components
+<h1 class="huge">Origins of Web Components</h1>
 
 ---
 
@@ -164,7 +164,7 @@ Now just go to  `http://localhost:3474`
 
 ===
 
-# The New Frontier
+<h1 class="huge">The New Frontier</h1>
 
 ---
 
@@ -198,7 +198,7 @@ Now just go to  `http://localhost:3474`
 
 ---
 
-## What HTML Imports Do
+# What HTML Imports Do
 
 * Fetch imported documents (recursively) 
 * Make imported DOM available on the `<link>` element
@@ -207,7 +207,7 @@ Now just go to  `http://localhost:3474`
 
 ---
 
-## HTML Imports Do Not Work Like This
+# HTML Imports Do Not Work Like This
 
 ```html
 <!doctype html>
@@ -222,7 +222,7 @@ Now just go to  `http://localhost:3474`
 
 ---
 
-# HTML Imports Work Like This
+# HTML Imports Work<br> Like This
 
 ```html
 <link rel="import" href="other-page.html" id="other-page">
@@ -238,13 +238,12 @@ Now just go to  `http://localhost:3474`
 
 ---
 
-# For Now:
-## HTML Imports = Custom Element Loaders
+# HTML Imports = Dependencies
 
 ===
 
 # The Template Tag
-## Inert DOM has never been so fun.
+## Simple. Inert. Fun.
 
 ---
 
@@ -281,19 +280,19 @@ document.body.appendChild(
 
 ---
 
-# We Know to Separate Content and Presentation
+<h1 class="huge">We Know to Separate Content and Presentation</h1>
 
 ---
 
-# But what if CSS isn't enough?
+<h1 class="huge">But what if CSS isn't enough?</h1>
 
 ---
 
-# JS Makes DOMs Dirty
+<h1 class="huge">JS Makes DOMs Dirty</h1>
 
 ---
 
-# Shadow DOM Cleans it Up
+<h1 class="huge">Shadow DOM Cleans it Up</h1>
 
 ---
 
