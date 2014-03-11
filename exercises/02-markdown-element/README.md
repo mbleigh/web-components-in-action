@@ -3,7 +3,7 @@
 Now we are going to create our own Polymer custom element that
 a user can fill with Markdown code and it will be rendered.
 
-**Estimated Time:** 25 minutes
+**Estimated Time:** 20 minutes
 
 ## Requirements
 

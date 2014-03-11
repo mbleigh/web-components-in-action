@@ -139,6 +139,42 @@ Now just go to  `http://localhost:3474`
 * Shadow DOM
 * Custom Elements
 
+---
+
+# Production ready?
+## Nope. Not yet.
+
+---
+
+# Then why care?
+## Big changes require advanced preparation.
+
+===
+
+# The New Frontier
+
+---
+
+# Best Practice for X?
+## I don't know. No one does.
+
+---
+
+# Pain Points
+1. Coordinating elements that aren't in the Shadow DOM.
+2. Constant changes, deprecations, and potential pitfalls.
+3. Even the standard is a moving target.
+4. Not everyone is on board, vendor infighting.
+
+---
+
+# Pleasure Points
+1. Encapsulation is glorious and powerful.
+2. Library potential is mind-blowing.
+3. Browser native will (eventually) pay off **huge**.
+4. Working with DOM for web apps *feels right*.
+5. You too can be a hipster.
+
 ===
 
 # HTML Imports
@@ -382,17 +418,12 @@ var MyElement = document.registerElement('my-element', {
 # Adding Attributes
 
 ```html
-<polymer-element name="name-tag" noscript>
+<polymer-element name="name-tag" attributes="first last" noscript>
   <template>
     <span>The name's {{last}}. {{first}} {{last}}.</span>
   </template>
 </polymer-element>
 ```
-
----
-
-# Powerful Composition
-[Example: GitHub User Card Custom Element](/examples/custom-elements/github-user.html)
 
 ---
 
@@ -426,4 +457,98 @@ Elements don't have to have a visual component.
 ---
 
 # Exercise Two
-`exercises/02-markdown-element` ([readme](https://github.com/mbleigh/web-components-in-action/tree/master/exercises/02-markdown-element)
+`exercises/02-markdown-element` ([readme](https://github.com/mbleigh/web-components-in-action/tree/master/exercises/02-markdown-element))
+
+===
+
+# Data Binding
+## Two-Way and All that Jazz
+
+---
+
+# Repetition
+
+```html
+<template>
+  <ul>
+    <template repeat="{{item in items}}">
+      <li>{{item.name}}</li>
+    </template>
+  </ul>
+</template>
+```
+
+---
+
+# Conditional Templates
+
+```html
+<template>
+  <template bind if="{{pill == 'red'}}">
+    <p>You took the red pill. Let's see how deep the rabbit hole goes.</p>
+  </template>
+  <template bind if="{{pill == 'blue'}}">
+    <p>Wake up, your journey is over.</p>
+  </template>
+</template>
+```
+
+---
+
+# Input Binding
+
+```html
+<template>
+  <input value="{{message}}">
+  
+  <p>Your message was <b>{{message}}</b></p>
+</template>
+```
+
+---
+
+# Attribute Binding
+
+```html
+<template>
+  <img src="/users/{{id}}/avatar.png">
+  <div class="{{ {active: selected == id} | tokenList }}"></div>
+</template>
+```
+
+---
+
+# Nested Scoping
+
+```html
+<template bind="{{ foo as foo }}">
+  <!-- foo.* available -->
+  <template bind="{{ foo.bar as bar }}">
+    <!-- foo.* & bar.* available -->
+    <template bind="{{ bar.bat }}">
+      <!-- only properties of bat are available -->
+      <template bind="{{ boo as bot }}">
+        <!-- bot.* and properties of bat are available. NOT foo.* or bar.* -->
+      </template>
+    </template>
+  </template>
+</template>
+```
+
+===
+
+# Polymer Elements
+## More than a polyfill.
+
+---
+
+# Web Components Are Super Reusable
+
+---
+
+# Polymer / Polymer UI
+
+---
+
+# Powerful Composition
+[Example: GitHub User Card Custom Element](/examples/custom-elements/github-user.html)
