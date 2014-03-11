@@ -26,7 +26,7 @@ a user can fill with Markdown code and it will be rendered.
 
 * Implement your element in the provided `markdown-content.html` import file.
 * The `marked.js` library is already installed via Bower and is available
-  at `/bower_components/markedlib/marked.js`. You can include external scripts
+  at `/bower_components/marked/lib/marked.js`. You can include external scripts
   in imported HTML files.
 * To detect and re-render on content changes, you will need to use a
   [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
