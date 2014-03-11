@@ -9,8 +9,7 @@ Created by **Michael Bleigh ([@mbleigh](http://twitter.com/mbleigh))** of **[Div
 
 ---
 
-# Divshot
-## Tools for the Static Web
+<img src="images/divshot-logo.svg" alt="Divshot" style="border: 0; background: transparent;">
 
 ---
 
@@ -22,9 +21,13 @@ Created by **Michael Bleigh ([@mbleigh](http://twitter.com/mbleigh))** of **[Div
 # Static Web PaaS
 ## Developer-Friendly, CDN Fast
 
+```
+$ divshot push production
+```
+
 ---
 
-# We Love Web Components
+<h1 class="huge">We Love Web Components</h1>
 
 ===
 
