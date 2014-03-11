@@ -26,6 +26,8 @@
     "polymer": "~0.2.1",
     "polymer-elements": "~0.2.1",
     "polymer-ui-elements": "~0.2.1",
-    "reveal.js": "~2.6.1"
+    "reveal.js": "~2.6.1",
+    "lodash": "~2.4.1",
+    "bootstrap": "~3.1.1"
   }
 }

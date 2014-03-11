@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="/bower_components/platform/platform.js"></script>
+    <link rel="import" href="/bower_components/polymer/polymer.html">
+    <link rel="import" href="/bower_components/polymer-ajax/polymer-ajax.html">
+    
+    <polymer-element name="github-user" attributes="login" noscript>
+      <template>
+        <style>
+          .card {
+            font-family: sans-serif; 
+            background: #eee;
+            padding: 8px;
+            height: 32px;
+            width: 160px;
+            display: inline-block;
+          }
+          img { float: left; margin-right: 10px; }
+          .name { font-size: 14px; display: block; font-weight: bold; }
+          a { color: #333; text-decoration: none; }
+          .location { font-size: 12px; color: #aaa; display: block; }
+          
+        </style>
+        <polymer-ajax auto url="https://api.github.com/users/{{login}}" handleAs="json" response="{{user}}"></polymer-ajax>
+        <template bind if="{{user}}"><div class="card"><a href="{{user.html_url}}" target="_blank">
+          <img src="{{user.avatar_url}}" width="32" height="32">
+          <span class="name">{{user.login}}</span>
+          <span class="location">{{user.location}}</span>
+        </a></div></template>
+      </template>
+    </polymer-element>
+    
+    <style>
+      github-user {
+        margin: 5px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <github-user login="mbleigh"></github-user>
+    </main>
+    <hr>
+    
+    <form>
+      <input type="text" placeholder="GitHub Username">
+      <button type="submit">Add Card</button>
+    </form>
+    
+    <script>
+      var main = document.querySelector("main")
+      var field = document.querySelector("input");
+      
+      document.querySelector("form").addEventListener("submit", function(e) {
+        e.preventDefault();
+        var newUser = document.createElement('github-user');
+        newUser.login = field.value;
+        
+        main.appendChild(newUser);
+        field.value = "";
+        
+        return false;
+      });
+    </script>
+  </body>
+</html>

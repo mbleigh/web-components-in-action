@@ -2,15 +2,24 @@
 <html>
   <head>
     <script src="/bower_components/platform/platform.js"></script>
+    <script src="/bower_components/lodash/dist/lodash.min.js"></script>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="import" href="imports/content.html" id="shared-content">
   </head>
   <body>
-    <header id="top"></header>
+    <header data-import="page-header"></header>
+    
+    <p class="container">This content is just for this page.</p>
+    
+    <footer data-import="page-footer"></footer>
     
     <script>
       window.addEventListener('WebComponentsReady', function() {
         var shared = document.getElementById('shared-content').import;
-        document.getElementById('top').appendChild( shared.getElementById('page-header') );
+        
+        _.each(document.querySelectorAll('[data-import]'), function(el) {
+          el.appendChild( shared.getElementById(el.dataset.import) );
+        });
       });
     </script>
   </body>

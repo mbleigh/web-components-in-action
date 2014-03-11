@@ -5,6 +5,20 @@ Created by **Michael Bleigh ([@mbleigh](http://twitter.com/mbleigh))** of **[Div
 
 ===
 
+# About Me
+
+---
+
+# Divshot
+## Tools for the Static Web
+
+---
+
+# Bootstrap Drag-n-Drop
+![Complex Web App](images/divshot_screenshot.png)
+
+===
+
 # A Roadmap
 
 1. What are web components?
@@ -32,6 +46,23 @@ Created by **Michael Bleigh ([@mbleigh](http://twitter.com/mbleigh))** of **[Div
 # Clone Me
 
 `git clone https://github.com/mbleigh/web-components-in-action.git`
+
+---
+
+# Run the Materials
+
+```
+bower install
+npm install -g superstatic
+superstatic
+```
+
+Now just go to  `http://localhost:3474`
+
+---
+
+# Audience Survey
+## Let's get to know each other.
 
 ===
 
@@ -151,6 +182,10 @@ Created by **Michael Bleigh ([@mbleigh](http://twitter.com/mbleigh))** of **[Div
   otherDoc.querySelector('#neato');
 </script>
 ```
+---
+
+# Simple Content Import
+[Shared Content HTML Imports Example](/examples/html-imports/content.html)
 
 ---
 
@@ -188,6 +223,7 @@ document.body.appendChild(
 1. **Inert.** Images aren't loaded, scripts aren't run.
 2. **Invisible.** Does not render, will not until activated.
 3. **Goes Anywhere.** Can be inlined at *any* point in the HTML.
+4. **A DOM Apart.** `querySelector` won't find its content.
 
 ===
 
@@ -264,7 +300,7 @@ var doge = function(word) {
 # Exercise One
 ## Shadow DOM Dismissable
 
-`exercises/01-shadow-dismissable`
+`exercises/01-shadow-dismissable` ([readme](https://github.com/mbleigh/web-components-in-action/tree/master/exercises/01-shadow-dismissable))
 
 ---
 
@@ -283,3 +319,111 @@ var doge = function(word) {
 
 # Custom Elements
 ## The Raison d'être
+
+---
+
+# All Together Now
+
+* HTML Imports to load custom elements
+* Shadow DOM for under-the-hood display
+* Template tags to define structure
+* **Plus:** Lifecycle events and API encapsulation
+
+---
+
+# Library Optional
+## (But STRONGLY recommended)
+
+---
+
+# Polymer
+[polymer-project.org](http://www.polymer-project.org/)
+
+---
+
+# X-Tags / Brick
+[x-tags.org](http://www.x-tags.org/) / [mozilla.github.io/brick](http://mozilla.github.io/brick/)
+
+---
+
+# Bare Metal
+
+```js
+// Elements MUST have a dash in the name
+var MyElement = document.registerElement('my-element', {
+  prototype: Object.create(HTMLElement.prototype, {
+    prop: {
+      get: function() { return 'foo'; }    
+    }
+  }
+});
+```
+
+(we won't be doing this today)
+
+---
+
+# Polymer Elements
+
+```html
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<polymer-element name="my-element" noscript>
+  <template>
+    <span>Hello from <b>my-element</b>. This is my Shadow DOM.</span>
+  </template>
+</polymer-element>
+
+<my-element></my-element>
+```
+
+---
+
+# Adding Attributes
+
+```html
+<polymer-element name="name-tag" noscript>
+  <template>
+    <span>The name's {{last}}. {{first}} {{last}}.</span>
+  </template>
+</polymer-element>
+```
+
+---
+
+# Powerful Composition
+[Example: GitHub User Card Custom Element](/examples/custom-elements/github-user.html)
+
+---
+
+# Bringing in Scripts
+
+```js
+<polymer-element name="annoying-alert">
+  <script>
+    Polymer('annoying-alert', {
+      attached: function() {
+        this.alert(this.textContent);
+      }
+    });
+  </script>
+</polymer-element>
+```
+
+Elements don't have to have a visual component.
+
+---
+
+# Lifecycle Methods
+
+* `created`: the element has been created
+* `ready`: the element has been fully prepared
+* `attached`: the element is live in the DOM with children/parents
+* `detached`: the element was removed from the DOM
+* `attributeChanged`: an attribute of the element was changed
+* `<attribute>Changed`: shortcut for individual attribute change
+
+---
+
+# Exercise Two
+`exercises/02-markdown-element` ([readme](https://github.com/mbleigh/web-components-in-action/tree/master/exercises/02-markdown-element)
