@@ -15,7 +15,16 @@ Created by **Michael Bleigh ([@mbleigh](http://twitter.com/mbleigh))** of **[Div
 ---
 
 # Bootstrap Drag-n-Drop
-![Complex Web App](images/divshot_screenshot.png)
+![Divshot Interface](images/divshot_screenshot.png)
+
+---
+
+# Static Web PaaS
+## Developer-Friendly, CDN Fast
+
+---
+
+# We Love Web Components
 
 ===
 
@@ -63,6 +72,10 @@ Now just go to  `http://localhost:3474`
 
 # Audience Survey
 ## Let's get to know each other.
+
+1. Who is already familiar with Web Components and Polymer?
+2. Who has used Bower before?
+3. What frameworks do you use for front-end code?
 
 ===
 
