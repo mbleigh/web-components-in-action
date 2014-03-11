@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Web Components in Action - Shadow DOM Dismissable Exercise</title>
+    
+    <style>
+      body { max-width: 640px; font-family: sans-serif; margin: 0 auto; }
+      h1   { text-align: center; }
+      div  { margin: 20px 0; }
+    </style>
+  </head>
+  <body>
+    <h1>The Boring Content Store</h1>
+    
+    <div class="dismissable">Here at the boring content store, we have lots of boring
+      content. In fact, we have so much boring content that you'll probably go insane
+      if you don't get rid of it.</div>
+    
+    <div class="dismissable" title="Spectacularly Boring">
+      <p>You may be wondering, why fill a store with so much boring content?</p>
+      <p>We'd let you know the answer, but that would actually be a little bit
+        interesting, so instead we won't.</p>
+    </div>
+    
+    <div>This content is boring, but you'll just have to live with it. No dismissal!</div>
+    
+    <!----- DO NOT EDIT ABOVE THIS LINE ------>
+    
+    <template id="dismissable-template">
+      <style>
+        section {
+          border: 1px solid #ccc;
+          padding: 10px;
+        }
+        
+        header {
+          margin: -10px -10px 10px;
+          padding: 0 5px;
+          background: #ccc;
+          font-size: 12px;
+          line-height: 20px;
+        }
+        
+        a {
+          float: right;
+          cursor: pointer;
+        }
+        
+        h3 {
+          margin: 0;
+          padding: 0;
+          font-size: 14px;
+          text-align: left;
+          display: inline-block;
+        }
+      </style>
+      <section>
+        <header>
+          <h3 id="title"></h3>
+          <a id="dismiss">Close</a>
+        </header>
+        <content></content>
+      </section>
+    </template>
+    <script>
+      var template = document.querySelector('#dismissable-template');
+      
+      [].forEach.call(document.querySelectorAll(".dismissable"), function(dismissable) {
+        var shadow = dismissable.createShadowRoot();
+        shadow.appendChild(document.importNode(template.content, true));
+        shadow.querySelector('#title').textContent = dismissable.title;
+        shadow.querySelector('#dismiss').addEventListener('click', function() {
+          dismissable.parentNode.removeChild(dismissable);
+        });
+      });
+    </script>
+  </body>
+</html>

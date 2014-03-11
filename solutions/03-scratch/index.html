@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    
+    <script src="/bower_components/platform/platform.js"></script>
+    <link rel="import" href="/bower_components/polymer/polymer.html"> 
+    
+    <link rel="import" href="elements/scratch-notes.html">
+    <link rel="import" href="elements/scratch-editor.html">
+    
+    <style>
+      #note-list {
+        width: 200px;
+        float: left;
+      }
+      
+      #editor {
+        margin-left: 200px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <aside id="note-list">
+      <scratch-notes></scratch-notes>
+      <br>
+      <button class="btn btn-block btn-success" onclick="document.querySelector('scratch-notes').create()">Create New Note</button>
+    </aside>
+    <main id="editor">
+      <scratch-editor></scratch-editor>
+    </main>
+    <script>
+      var notes = document.querySelector("scratch-notes");
+      var editor = document.querySelector("scratch-editor");
+      
+      notes.addEventListener('selected', function(e) {
+        editor.setAttribute("key", e.detail.key);
+      });
+      
+      editor.addEventListener('destroy', function(e) {
+        editor.destroy(e.detail.key);
+      });
+      
+      editor.addEventListener('save', function(e) {
+        notes.reload();
+      });
+    </script>
+  </body>
+</html>

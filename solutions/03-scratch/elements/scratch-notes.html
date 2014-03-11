@@ -1,0 +1,65 @@
+<link rel="import" href="/bower_components/polymer-localstorage/polymer-localstorage.html">
+
+<polymer-element name="scratch-notes" attributes="set selected">
+  <template>
+    <style>
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      li a {
+        display: block;
+        border-bottom: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        padding: 5px 10px;
+        text-decoration: none;
+        color: #555;
+      }
+      li a:hover {
+        color: #222;
+      }
+      li a.selected {
+        font-weight: bold;
+      }
+      
+    </style>
+    <polymer-localstorage name="{{set}}" value="{{notes}}" id="storage"></polymer-localstorage>
+    <ul>
+      <template repeat="{{note, i in notes}}">
+        <li>
+          <a href="#" on-click="{{openNote}}" data-key="{{i}}" class="{{ {selected: selected == i} | tokenList }}">{{note.title}}</a>
+        </li>
+      </template>
+    </ul>
+  </template>
+  <script>
+    Polymer('scratch-notes', {
+      set: "notes",
+      ready: function() {
+        this.notes = this.notes || [];
+      },
+      openNote: function(e) {
+        e.preventDefault();
+        this.selected = e.target.dataset.key;
+      },
+      reload: function() {
+        this.$.storage.load();
+      },
+      selectedChanged: function() {
+        this.fire('selected', {key: this.selected});  
+      },
+      create: function() {
+        this.notes.push({title: "My Note " + (this.notes.length + 1).toString(), content: ""});
+        this.$.storage.save();
+        this.selected = this.notes.length - 1;
+        return this.notes[this.notes.length - 1];
+      },
+      destroy: function(key) {
+        console.log(key);
+        this.notes.splice(parseInt(key),1);
+        this.$.storage.save();
+      }
+    });
+  </script>
+</polymer-element>

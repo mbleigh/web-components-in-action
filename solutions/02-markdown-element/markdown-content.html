@@ -1,0 +1,51 @@
+<script src="/bower_components/marked/lib/marked.js"></script>
+
+<polymer-element name="markdown-content" attributes="source">
+  <template>
+    <div id="content" hidden?="{{source}}"></div>
+    <pre id="source" hidden?="{{!source}}">{{indentedTextContent}}</pre>
+  </template>
+  <script>
+    Polymer('markdown-content', {
+      source: false,
+      render: function() {
+        var el = this;
+       
+        this.indentedTextContent = this.removeLeadingIndentation(this.textContent);
+        
+        marked(this.indentedTextContent, this.options, function(err, html) {
+          this.renderedContent = html
+          el.$.content.innerHTML = this.renderedContent
+        });
+      },
+      // taken with modification from http://stackoverflow.com/questions/8884740/trouble-with-excess-white-space-inside-pre-elements
+      removeLeadingIndentation: function(string) {
+        var lines = string.split("\n");
+        var offset;
+        
+        if (lines.length === 0){ return ""; }
+        if ( lines[0].trim().length == 0 ) {
+          lines = lines.slice(1);
+        }
+        if ( lines.length > 1 && lines[ lines.length - 1 ].trim().length === 0 ) {
+          lines.pop();
+        }
+        offset = lines[ 0 ].match( /^\s*/ )[ 0 ].length;
+    
+        for(var i in lines) {
+          lines[i] = lines[i].slice(offset)
+        }
+        
+        return lines.join("\n");
+      },
+      attached: function() {
+        var el = this;
+        this.observer = new MutationObserver(function() {
+          el.render();
+        }).observe(this, {childList: true, characterData: true, subtree: true});
+        this.render();
+      },
+      sourceChanged: function() { this.render(); }
+    });
+  </script>
+</polymer-element>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    
+    <script src="/bower_components/platform/platform.js"></script>
+    <link rel="import" href="/bower_components/polymer/polymer.html"> 
+    
+    <link rel="import" href="markdown-content.html">
+    
+    <style>
+      markdown-content ^ h1:first-child {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <markdown-content source="false">
+        # Some Sample Markdown
+        
+        Why hello good sir! It appears that you are marking some content
+        down for ease of writing. "Tally ho!"
+        
+        1. Remember that Polymer is still in alpha, things might get hairy.
+        2. This is another item because we'd like to have some content, no?
+        
+        Did you know that the [marked](https://github.com/chjj/marked) library supports GitHub-flavored markdown?
+        
+        ```js
+        // this is some javascript code
+        alert("neato");
+        ```
+      </markdown-content>
+    </div>
+  </body>
+</html>
